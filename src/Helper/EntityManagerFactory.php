@@ -2,9 +2,9 @@
 
 namespace Alura\Doctrine\Helper;
 
+use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Tools\Setup;
 
 class EntityManagerFactory
 {
@@ -18,9 +18,9 @@ class EntityManagerFactory
 
     public function getEntityManager(): EntityManagerInterface
     {
-        $rootDir = __DIR__ . '/../..';
+        $rootDir = __DIR__ . '\..\..';
         $config = Setup::createAnnotationMetadataConfiguration(
-            [$rootDir . '/src'],
+            [$rootDir . '\src'],
             true
         );
         $connection = [ 
@@ -28,7 +28,7 @@ class EntityManagerFactory
             'path' => $rootDir . '/var/data/banco.sqlite'
         ];
 
-        return EntityManager::create( $connection, $config);
+        return EntityManager::create($connection, $config);
     }
 
 }
