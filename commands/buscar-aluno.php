@@ -17,3 +17,6 @@ $alunosList = $alunoRepository->findAll();
 foreach ($alunosList as $aluno ) {
     echo "\n ID:{$aluno->getId()} \n Nome:{$aluno->getNome()} \n ";
 }
+
+$alunoBruno = $alunoRepository->find(1);
+echo " \n Aluno especifico:{$alunoBruno->getNome()}";
