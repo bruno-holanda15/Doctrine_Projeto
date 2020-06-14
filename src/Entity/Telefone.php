@@ -44,7 +44,7 @@ class Telefone
         return $this->aluno;
     }
 
-    public function setAluno(string $aluno): self
+    public function setAluno(Aluno $aluno): self
     {
         $this->aluno = $aluno;
         return $this;
