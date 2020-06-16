@@ -17,8 +17,16 @@ $alunoRepository = $entityManager->getRepository(Aluno::class);
 $debugStack = new DebugStack();
 $entityManager->getConfiguration()->setSQLLogger($debugStack);
 
+$classeAluno = Aluno::class;
+
+// inserindo dql para otimizar a execução de queries, melhorando a performance do sistema
+$dql = "SELECT a, t, c FROM $classeAluno a JOIN a.telefones t JOIN a.cursos c";
+$query = $entityManager->createQuery($dql);
 /** @var Aluno[] $alunos */
-$alunos = $alunoRepository->findAll();
+$alunos = $query->getResult();
+
+// /** @var Aluno[] $alunos */
+// $alunos = $alunoRepository->findAll();
 
 foreach ($alunos as $aluno ) {
 
